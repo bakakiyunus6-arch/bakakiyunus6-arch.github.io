@@ -1,0 +1,146 @@
+.settings-topbar {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 16px max(18px, calc((100% - 900px) / 2));
+    background: #10233f;
+    color: white;
+}
+
+.settings-topbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.settings-topbar h1 {
+    margin: 0;
+    font-size: 19px;
+}
+
+.settings-container {
+    width: min(100% - 28px, 760px);
+    margin: 26px auto 60px;
+}
+
+.settings-intro {
+    margin-bottom: 22px;
+}
+
+.settings-intro h2 {
+    margin: 5px 0;
+    color: #10233f;
+}
+
+.settings-intro p:last-child,
+.settings-help {
+    color: #687386;
+    line-height: 1.5;
+}
+
+.settings-panel {
+    margin-bottom: 18px;
+    padding: 22px;
+}
+
+.settings-panel h2 {
+    margin-top: 0;
+    color: #10233f;
+    font-size: 19px;
+}
+
+.settings-panel label {
+    display: block;
+    margin: 15px 0 6px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.settings-panel input,
+.settings-panel textarea {
+    width: 100%;
+    min-height: 45px;
+    padding: 11px 12px;
+    border: 1px solid #d7dee8;
+    border-radius: 8px;
+    background: white;
+    color: #202938;
+    font: inherit;
+}
+
+.settings-panel textarea {
+    resize: vertical;
+}
+
+.settings-panel input:disabled {
+    background: #f1f4f8;
+    color: #687386;
+}
+
+.settings-panel .full-button {
+    width: 100%;
+    margin-top: 17px;
+}
+
+.settings-panel .secondary-button {
+    min-height: 45px;
+    border: 1px solid #d7dee8;
+    border-radius: 8px;
+    background: #f1f4f8;
+    color: #10233f;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.settings-message {
+    min-height: 20px;
+    margin: 9px 0 0;
+    font-size: 13px;
+}
+
+.pin-status {
+    margin: 12px 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #edf4fb;
+    color: #174b77;
+    font-size: 13px;
+}
+
+.security-warning {
+    margin: 16px 0 0;
+    color: #80601b;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.settings-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #0878c9;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.settings-footer {
+    margin-top: 25px;
+    color: #687386;
+    font-size: 12px;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .settings-topbar {
+        gap: 12px;
+    }
+
+    .settings-topbar h1 {
+        font-size: 16px;
+    }
+
+    .settings-panel {
+        padding: 17px;
+    }
+}

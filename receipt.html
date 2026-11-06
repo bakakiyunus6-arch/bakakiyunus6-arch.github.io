@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10233f">
+    <meta name="description" content="BAK SNACKS CENTER sales receipt">
+    <title>Sales Receipt | BAK SNACKS CENTER</title>
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/receipt.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <main class="receipt-page">
+        <nav class="receipt-navigation no-print">
+            <a href="index.html">← Back to dashboard</a>
+        </nav>
+
+        <section class="receipt-card" id="receipt-card">
+            <div id="receipt-content" class="receipt-content">
+                <p class="loading-message">Loading receipt...</p>
+            </div>
+        </section>
+
+        <div class="receipt-actions no-print" id="receipt-actions" hidden>
+            <button type="button" id="print-button" class="button button-primary">
+                Print receipt
+            </button>
+            <button type="button" id="share-button" class="button button-secondary">
+                Share receipt
+            </button>
+        </div>
+
+        <p class="page-footer no-print">BAK SNACKS CENTER · Business Management</p>
+    </main>
+
+    <script src="js/security.js"></script>
+    <script src="js/receipt.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>

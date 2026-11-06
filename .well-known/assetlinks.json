@@ -1,8 +1,14 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "io.github.bakakiyunus6_arch.twa",
-        "sha256_cert_fingerprints": ["49:14:85:B9:E3:06:14:1B:EA:D3:D5:50:3A:9D:92:AA:18:99:F0:2F:3C:2F:48:1D:48:96:02:79:AF:FD:6B:2D"]
-      }
-    }]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.netlify.endearing_sable_66a1ff.twa",
+      "sha256_cert_fingerprints": [
+        "B8:5D:CD:D4:20:97:1F:99:D9:76:EE:85:5D:CD:BE:E8:3E:67:8F:2D:D5:92:CA:AD:E2:ED:30:35:A0:75:43:D0"
+      ]
+    }
+  }
+]

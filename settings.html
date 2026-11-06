@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10233f">
+    <meta name="description" content="BAK SNACKS CENTER business settings">
+    <title>Business Settings | BAK SNACKS CENTER</title>
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header class="settings-topbar">
+        <a href="index.html">← Dashboard</a>
+        <h1>Business Settings</h1>
+    </header>
+
+    <main class="settings-container">
+        <section class="settings-intro">
+            <p class="eyebrow">BAK SNACKS CENTER</p>
+            <h2>Manage your business</h2>
+            <p>Update your business identity and protect access to your management system.</p>
+        </section>
+
+        <section class="panel settings-panel">
+            <h2>Business information</h2>
+            <p class="settings-help">These details appear on your sales receipts.</p>
+
+            <form id="business-form">
+                <label for="business-name">Business name</label>
+                <input id="business-name" type="text" maxlength="80" required>
+
+                <label for="business-phone">Business phone number</label>
+                <input id="business-phone" type="tel" maxlength="30" placeholder="e.g. 07XXXXXXXX">
+
+                <label for="business-address">Business address or location</label>
+                <textarea id="business-address" rows="3" maxlength="180"
+                    placeholder="e.g. Kireka, Uganda"></textarea>
+
+                <label>Currency</label>
+                <input type="text" value="UGX — Uganda Shillings" disabled>
+
+                <button class="primary-button full-button" type="submit">
+                    Save business information
+                </button>
+                <p class="settings-message" id="business-message" role="status"></p>
+            </form>
+        </section>
+
+        <section class="panel settings-panel">
+            <h2>Owner PIN protection</h2>
+            <p class="settings-help">
+                Set a 4–12 digit PIN. The system will request it when opened in a new browser session.
+            </p>
+
+            <div class="pin-status" id="pin-status"></div>
+
+            <form id="pin-form">
+                <label for="new-pin">New owner PIN</label>
+                <input id="new-pin" type="password" inputmode="numeric"
+                    pattern="[0-9]{4,12}" minlength="4" maxlength="12"
+                    autocomplete="new-password" placeholder="4 to 12 digits" required>
+
+                <label for="confirm-pin">Confirm new PIN</label>
+                <input id="confirm-pin" type="password" inputmode="numeric"
+                    pattern="[0-9]{4,12}" minlength="4" maxlength="12"
+                    autocomplete="new-password" placeholder="Repeat your PIN" required>
+
+                <button class="primary-button full-button" type="submit">
+                    Save owner PIN
+                </button>
+                <p class="settings-message" id="pin-message" role="status"></p>
+            </form>
+
+            <button type="button" class="secondary-button full-button" id="lock-button">
+                Lock business now
+            </button>
+
+            <p class="security-warning">
+                Keep your PIN private. This PIN protects the app interface on this device;
+                it does not encrypt the underlying browser database.
+            </p>
+        </section>
+
+        <section class="panel settings-panel">
+            <h2>Data and storage</h2>
+            <p>
+                Your business records are stored in this browser on this device.
+                Download backups regularly and keep a copy somewhere safe.
+            </p>
+            <a class="settings-link" href="backup.html">Open Backup & Restore →</a>
+        </section>
+
+        <p class="settings-footer">BAK SNACKS CENTER · Business Management</p>
+    </main>
+
+    <script src="js/security.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>

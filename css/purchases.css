@@ -1,0 +1,283 @@
+.purchases-page {
+  width: min(1100px, 94%);
+  margin: 24px auto 60px;
+  color: #172033;
+}
+
+.purchase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.purchase-header h1 {
+  margin: 4px 0;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.purchase-header p {
+  margin: 5px 0;
+  color: #64748b;
+}
+
+.eyebrow {
+  color: #0077b6 !important;
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.back-link {
+  text-decoration: none;
+  color: #00509d;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.purchase-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.purchase-stat,
+.purchase-panel {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 17px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, .04);
+}
+
+.purchase-stat span {
+  display: block;
+  color: #64748b;
+  font-size: .83rem;
+}
+
+.purchase-stat strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.15rem;
+  overflow-wrap: anywhere;
+}
+
+.purchase-panel {
+  margin-bottom: 18px;
+}
+
+.purchase-panel h2 {
+  margin: 0 0 16px;
+  font-size: 1.12rem;
+}
+
+.purchase-panel h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.purchase-panel label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #334155;
+  font-size: .88rem;
+  font-weight: 600;
+  min-width: 0;
+}
+
+.purchase-panel input,
+.purchase-panel select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: #fff;
+  color: #172033;
+  font: inherit;
+}
+
+.purchase-panel button {
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 16px;
+  background: #00509d;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.purchase-panel button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.supplier-form,
+.payment-form,
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.supplier-form button,
+.payment-form button {
+  align-self: end;
+}
+
+.form-grid {
+  margin-bottom: 15px;
+}
+
+.section-subheading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 12px;
+}
+
+.purchase-panel .secondary-button {
+  background: #e7f1fb;
+  color: #00509d;
+}
+
+.material-line {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(90px, 1fr) minmax(90px, 1fr) auto;
+  gap: 9px;
+  align-items: end;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.material-line label {
+  font-size: .78rem;
+}
+
+.material-line .remove-item {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 10px 12px;
+}
+
+.purchase-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  margin: 10px 0 15px;
+  border-top: 1px solid #e2e8f0;
+  font-weight: 700;
+}
+
+.purchase-total strong {
+  font-size: 1.2rem;
+}
+
+.help-text {
+  color: #64748b;
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+.message {
+  margin-top: 10px;
+  font-size: .88rem;
+  line-height: 1.5;
+}
+
+.message.success {
+  color: #15803d;
+}
+
+.message.error {
+  color: #b91c1c;
+}
+
+.supplier-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.supplier-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px;
+  background: #f8fafc;
+  border-radius: 9px;
+}
+
+.supplier-row small {
+  display: block;
+  color: #64748b;
+  margin-top: 3px;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.purchase-panel table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .84rem;
+  min-width: 650px;
+}
+
+.purchase-panel th,
+.purchase-panel td {
+  padding: 12px 9px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.purchase-panel th {
+  color: #475569;
+  background: #f8fafc;
+}
+
+.balance-due {
+  color: #b45309;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .purchase-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .purchase-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .supplier-form,
+  .payment-form,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .material-line {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .material-line label:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .material-line .remove-item {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,0 +1,179 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f2f5fa;
+  color: #172033;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.55;
+}
+
+.topbar {
+  background: #002060;
+  color: white;
+  padding: 18px max(18px, calc((100% - 850px) / 2));
+}
+
+.back-link {
+  display: inline-block;
+  color: #bfe8ff;
+  text-decoration: none;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 21px;
+  letter-spacing: .4px;
+}
+
+.topbar p {
+  margin: 4px 0 0;
+  color: #d8e8ff;
+  font-size: 14px;
+}
+
+.container {
+  width: min(100% - 28px, 850px);
+  margin: 25px auto 50px;
+}
+
+.intro {
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  color: #0077b6;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.intro h2 {
+  margin: 7px 0;
+  font-size: 26px;
+}
+
+.intro p,
+.panel p,
+.panel li {
+  color: #586477;
+  font-size: 14px;
+}
+
+.panel {
+  background: white;
+  border: 1px solid #e1e7f0;
+  border-radius: 15px;
+  padding: 22px;
+  margin-bottom: 17px;
+  box-shadow: 0 5px 18px rgba(15, 35, 70, .045);
+}
+
+.panel h2 {
+  margin: 5px 0 8px;
+  font-size: 19px;
+}
+
+.panel-icon {
+  font-size: 25px;
+}
+
+.primary-button,
+.danger-button {
+  width: 100%;
+  border: 0;
+  border-radius: 9px;
+  padding: 14px 16px;
+  margin-top: 12px;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: #006bb6;
+}
+
+.danger-button {
+  background: #b42318;
+}
+
+button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.file-label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+input[type="file"] {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px dashed #9aabc1;
+  border-radius: 9px;
+  background: #f8faff;
+}
+
+.info-text {
+  margin-top: 12px;
+  color: #586477;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.warning {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #fff4e5;
+  color: #8a4b08 !important;
+}
+
+.panel ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.panel li {
+  margin: 8px 0;
+}
+
+.status {
+  padding: 13px 15px;
+  border-radius: 9px;
+  background: #e8f1ff;
+  color: #174477;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.status.error {
+  background: #fff0ef;
+  color: #a32118;
+}
+
+.status.success {
+  background: #e9f8ef;
+  color: #176b37;
+}
+
+@media (max-width: 480px) {
+  .intro h2 {
+    font-size: 22px;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+}

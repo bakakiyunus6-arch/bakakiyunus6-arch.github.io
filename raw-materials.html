@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10233f">
+    <title>Raw Materials | BAK SNACKS CENTER</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/raw-materials.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <a class="back-link" href="index.html" aria-label="Back to dashboard">←</a>
+            <div>
+                <h1>BAK SNACKS CENTER</h1>
+                <p>Inventory Management</p>
+            </div>
+        </div>
+        <div class="status"><span class="status-dot"></span> Local storage</div>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">INVENTORY MANAGEMENT</p>
+                <h2>Raw Materials</h2>
+                <p class="muted">Manage ingredients and packaging supplies.</p>
+            </div>
+            <button class="primary-button" id="add-material-button">+ Add material</button>
+        </section>
+
+        <section class="stats-grid material-stats">
+            <article class="stat-card">
+                <span class="stat-label">Registered materials</span>
+                <strong id="material-count">0</strong>
+                <span class="stat-note">Different material types</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Low-stock materials</span>
+                <strong id="low-stock-count">0</strong>
+                <span class="stat-note">At or below reorder level</span>
+            </article>
+            <article class="stat-card highlight-card">
+                <span class="stat-label">Estimated stock value</span>
+                <strong id="stock-value">UGX 0</strong>
+                <span class="stat-note">Based on recorded unit costs</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Recent movements</span>
+                <strong id="movement-count">0</strong>
+                <span class="stat-note">Stock additions and adjustments</span>
+            </article>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <h3>Material inventory</h3>
+                    <p>Current quantities and restocking levels</p>
+                </div>
+                <button class="text-button" id="refresh-button">Refresh</button>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Material</th>
+                            <th>Quantity</th>
+                            <th>Reorder level</th>
+                            <th>Cost per unit</th>
+                            <th>Stock value</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="materials-table">
+                        <tr><td colspan="7">Loading materials...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <h3>Recent stock movements</h3>
+                    <p>Opening stock and restocking records</p>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Material</th>
+                            <th>Movement</th>
+                            <th>Quantity</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody id="movements-table">
+                        <tr><td colspan="5">No stock movements yet.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>
+            <p>BAK SNACKS CENTER &copy; <span id="year"></span></p>
+            <p>Raw materials inventory</p>
+        </footer>
+    </main>
+
+    <dialog id="material-dialog" class="app-dialog">
+        <form id="material-form">
+            <div class="dialog-heading">
+                <div><p class="eyebrow">NEW INVENTORY ITEM</p><h2>Register material</h2></div>
+                <button type="button" class="close-button" data-close="material-dialog">×</button>
+            </div>
+
+            <label for="material-name">Material name</label>
+            <input id="material-name" type="text" placeholder="e.g. Popcorn kernels" required maxlength="80">
+
+            <label for="material-unit">Measurement unit</label>
+            <select id="material-unit" required>
+                <option value="kg">Kilograms (kg)</option>
+                <option value="g">Grams (g)</option>
+                <option value="litres">Litres</option>
+                <option value="ml">Millilitres (ml)</option>
+                <option value="pieces">Pieces</option>
+                <option value="packets">Packets</option>
+                <option value="bags">Bags</option>
+            </select>
+
+            <label for="material-quantity">Opening quantity</label>
+            <input id="material-quantity" type="number" min="0" step="0.001" value="0" required>
+
+            <label for="material-reorder">Minimum stock level</label>
+            <input id="material-reorder" type="number" min="0" step="0.001" value="1" required>
+
+            <label for="material-cost">Cost per unit (UGX)</label>
+            <input id="material-cost" type="number" min="0" step="1" value="0" required>
+
+            <button type="submit" class="primary-button full-button">Save material</button>
+            <p class="form-message" id="material-message"></p>
+        </form>
+    </dialog>
+
+    <dialog id="restock-dialog" class="app-dialog">
+        <form id="restock-form">
+            <div class="dialog-heading">
+                <div><p class="eyebrow">INVENTORY UPDATE</p><h2>Restock material</h2></div>
+                <button type="button" class="close-button" data-close="restock-dialog">×</button>
+            </div>
+
+            <input type="hidden" id="restock-material-id">
+
+            <label for="restock-material-name">Material</label>
+            <input id="restock-material-name" type="text" readonly>
+
+            <label for="restock-quantity">Quantity received</label>
+            <input id="restock-quantity" type="number" min="0.001" step="0.001" required>
+
+            <label for="restock-cost">Updated cost per unit (UGX)</label>
+            <input id="restock-cost" type="number" min="0" step="1" required>
+
+            <label for="restock-note">Note (optional)</label>
+            <input id="restock-note" type="text" maxlength="120" placeholder="Supplier or purchase details">
+
+            <button type="submit" class="primary-button full-button">Save restock</button>
+            <p class="form-message" id="restock-message"></p>
+        </form>
+    </dialog>
+
+    <script src="js/raw-materials.js"></script>
+    <script src="js/security.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>

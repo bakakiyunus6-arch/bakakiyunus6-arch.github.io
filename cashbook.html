@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#002060">
+  <title>Expenses & Cashbook | BAK SNACKS CENTER</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cashbook.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+<main class="cashbook-page">
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">BAK SNACKS CENTER</p>
+      <h1>Expenses & Cashbook</h1>
+      <p>Track operating expenses and other cash movements.</p>
+    </div>
+    <a href="index.html">← Dashboard</a>
+  </header>
+
+  <section class="summary-grid">
+    <article><span>Money received</span><strong id="moneyIn">UGX 0</strong></article>
+    <article><span>Money paid out</span><strong id="moneyOut">UGX 0</strong></article>
+    <article><span>Net cash movement</span><strong id="netMovement">UGX 0</strong></article>
+    <article><span>Operating expenses</span><strong id="expenseTotal">UGX 0</strong></article>
+  </section>
+
+  <section class="panel">
+    <h2>Record cash movement</h2>
+    <form id="entryForm">
+      <div class="form-grid">
+        <label>Entry type
+          <select id="entryType" required>
+            <option value="expense">Operating expense</option>
+            <option value="income">Other income</option>
+          </select>
+        </label>
+        <label>Date
+          <input type="date" id="entryDate" required>
+        </label>
+        <label>Category
+          <select id="entryCategory" required>
+            <option value="Rent">Rent</option>
+            <option value="Transport">Transport</option>
+            <option value="Electricity">Electricity</option>
+            <option value="Water">Water</option>
+            <option value="Wages">Wages</option>
+            <option value="Packaging">Packaging expense</option>
+            <option value="Maintenance">Maintenance</option>
+            <option value="Communication">Communication</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label>Amount (UGX)
+          <input type="number" id="entryAmount" min="1" step="1" required placeholder="e.g. 5000">
+        </label>
+        <label>Payment method
+          <select id="entryMethod" required>
+            <option value="Cash">Cash</option>
+            <option value="MTN Mobile Money">MTN Mobile Money</option>
+            <option value="Airtel Money">Airtel Money</option>
+          </select>
+        </label>
+        <label>Reference
+          <input id="entryReference" maxlength="80" placeholder="Optional">
+        </label>
+      </div>
+      <label>Description
+        <input id="entryDescription" maxlength="200" placeholder="What was this money for?" required>
+      </label>
+      <button type="submit" class="primary-button">Save cashbook entry</button>
+      <p id="entryMessage" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Cashbook records</h2>
+    <div class="filters">
+      <label>Filter by type
+        <select id="filterType">
+          <option value="all">All entries</option>
+          <option value="income">Money received</option>
+          <option value="expense">Operating expenses</option>
+          <option value="supplier">Supplier payments</option>
+        </select>
+      </label>
+      <label>From date
+        <input type="date" id="filterFrom">
+      </label>
+      <label>To date
+        <input type="date" id="filterTo">
+      </label>
+      <button type="button" id="resetFilters" class="secondary-button">Reset filters</button>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th><th>Type</th><th>Description</th>
+            <th>Method</th><th>Money in</th><th>Money out</th>
+          </tr>
+        </thead>
+        <tbody id="cashbookRows">
+          <tr><td colspan="6">Loading records...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Important accounting note</h2>
+    <p class="accounting-note">
+      Sales and dashboard expenses are automatically imported into this cashbook.
+      Supplier payments are imported from Purchasing and shown as cash outflows.
+      Inventory purchases are not operating expenses. Do not enter sales or dashboard
+      expenses here again, or they will be counted twice.
+    </p>
+  </section>
+</main>
+<script src="js/cashbook.js"></script>
+    <script src="js/security.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>

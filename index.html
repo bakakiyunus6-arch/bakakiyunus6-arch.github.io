@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10233f">
+    <meta name="description" content="BAK SNACKS CENTER business management">
+    <title>BAK SNACKS CENTER</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">B</div>
+            <div>
+                <h1>BAK SNACKS CENTER</h1>
+                <p>Business Management</p>
+            </div>
+        </div>
+        <div class="status">
+            <span class="status-dot"></span>
+            <span>Offline ready</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">BUSINESS OVERVIEW</p>
+                <h2>Dashboard</h2>
+                <p id="today-date" class="muted"></p>
+            </div>
+            <button class="primary-button" id="sale-button">+ New sale</button>
+        </section>
+
+        <section class="stats-grid">
+            <article class="stat-card">
+                <span class="stat-label">Today's sales</span>
+                <strong id="today-sales">UGX 0</strong>
+                <span class="stat-note">Money received today</span>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-label">Today's expenses</span>
+                <strong id="today-expenses">UGX 0</strong>
+                <span class="stat-note">Expenses recorded today</span>
+            </article>
+
+            <article class="stat-card highlight-card">
+                <span class="stat-label">Today's balance</span>
+                <strong id="today-balance">UGX 0</strong>
+                <span class="stat-note">Sales minus expenses</span>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-label">Units in stock</span>
+                <strong id="stock-count">0</strong>
+                <span class="stat-note">Finished products</span>
+            </article>
+        </section>
+
+        <section class="content-grid">
+            <article class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Quick actions</h3>
+                        <p>Manage your daily business activities</p>
+                    </div>
+                </div>
+
+                <div class="action-grid">
+                    <button class="action-button" id="quick-sale">
+                        <span class="action-icon sale-icon">＋</span>
+                        <span>Record sale</span>
+                    </button>
+
+                    <button class="action-button" id="quick-expense">
+                        <span class="action-icon expense-icon">−</span>
+                        <span>Add expense</span>
+                    </button>
+
+                    <button class="action-button" id="quick-stock">
+                        <span class="action-icon stock-icon">▣</span>
+                        <span>Add stock</span>
+                    </button>
+
+                    <button class="action-button" id="quick-history">
+                        <span class="action-icon history-icon">◷</span>
+                        <span>View history</span>
+                    </button>
+
+                    <a class="action-button" href="raw-materials.html" style="text-decoration:none">
+                        <span class="action-icon stock-icon">▤</span>
+                        <span>Raw materials</span>
+                    </a>
+
+                    <a class="action-button" href="production.html" style="text-decoration:none">
+                        <span class="action-icon sale-icon">⚙</span>
+                        <span>Production</span>
+                    </a>
+
+                    <a class="action-button" href="purchases.html" style="text-decoration:none">
+                        <span class="action-icon stock-icon">🛒</span>
+                        <span>Purchases & Suppliers</span>
+                    </a>
+
+                    <a class="action-button" href="cashbook.html" style="text-decoration:none">
+                        <span class="action-icon expense-icon">💰</span>
+                        <span>Cashbook</span>
+                    </a>
+<a class="action-button" href="backup.html" style="text-decoration:none">
+  <span class="action-icon stock-icon">🛡️</span>
+  <span>Backup & Restore</span>
+</a>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Business information</h3>
+                        <p>Your business at a glance</p>
+                    </div>
+                </div>
+                <div class="info-list">
+                    <div><span>Business</span><strong>BAK SNACKS CENTER</strong></div>
+                    <div><span>Currency</span><strong>Ugandan Shilling (UGX)</strong></div>
+                    <div><span>Storage</span><strong>On this device</strong></div>
+                    <div><span>Connection</span><strong id="connection-status">Checking...</strong></div>
+                </div>
+            </article>
+        </section>
+
+        <section class="panel inventory-panel">
+            <div class="panel-heading">
+                <div>
+                    <h3>Finished products</h3>
+                    <p>Current product stock levels</p>
+                </div>
+                <button class="text-button" id="stock-button">+ Add stock</button>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Unit price</th>
+                            <th>Quantity</th>
+                            <th>Stock status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-table">
+                        <tr><td colspan="4">Loading products...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        <section class="panel sales-report-panel" id="sales-report">
+            <div class="panel-heading">
+                <div>
+                    <h3>Sales performance report</h3>
+                    <p>Revenue, payment methods and best-selling products</p>
+                </div>
+            </div>
+
+            <div class="report-filters">
+                <div>
+                    <label for="report-from">From date</label>
+                    <input type="date" id="report-from">
+                </div>
+                <div>
+                    <label for="report-to">To date</label>
+                    <input type="date" id="report-to">
+                </div>
+                <button type="button" class="text-button" id="report-today">Today</button>
+            </div>
+
+            <p id="report-error" class="report-error"></p>
+
+            <div class="report-stat-grid">
+                <article class="report-stat">
+                    <span>Total sales revenue</span>
+                    <strong id="report-revenue">UGX 0</strong>
+                </article>
+                <article class="report-stat">
+                    <span>Sales transactions</span>
+                    <strong id="report-count">0</strong>
+                </article>
+                <article class="report-stat">
+                    <span>Units sold</span>
+                    <strong id="report-units">0</strong>
+                </article>
+            </div>
+
+            <div class="report-columns">
+                <div class="report-block">
+                    <h4>Revenue by payment method</h4>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr><th>Payment</th><th>Transactions</th><th>Revenue</th></tr>
+                            </thead>
+                            <tbody id="report-payments">
+                                <tr><td colspan="3">No sales in this period.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="report-block">
+                    <h4>Best-selling products</h4>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr><th>Product</th><th>Units</th><th>Revenue</th></tr>
+                            </thead>
+                            <tbody id="report-products">
+                                <tr><td colspan="3">No sales in this period.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-block daily-report-block">
+                <h4>Daily sales history</h4>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Date</th><th>Transactions</th><th>Units</th><th>Revenue</th></tr>
+                        </thead>
+                        <tbody id="report-daily">
+                            <tr><td colspan="4">No sales in this period.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <p class="report-disclaimer">
+                Revenue represents recorded sales, not net profit.
+            </p>
+        </section>
+
+        <section class="panel history-panel" id="history-section">
+            <div class="panel-heading">
+                <div>
+                    <h3>Recent transactions</h3>
+                    <p>Your latest sales and expenses</p>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Payment</th>
+                            <th>Amount</th>
+                            <th>Receipt</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactions-table">
+                        <tr><td colspan="6">No transactions yet.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>
+            <p>BAK SNACKS CENTER &copy; <span id="year"></span></p>
+            <p>Your business, organised.</p>
+        </footer>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="#" class="active">⌂ <span>Home</span></a>
+        <button id="nav-sale">＋ <span>Sales</span></button>
+        <button id="nav-stock">▣ <span>Stock</span></button>
+        <button id="nav-history">◷ <span>History</span></button>
+    </nav>
+
+    <!-- Sale dialog -->
+    <dialog id="sale-dialog" class="app-dialog">
+        <form id="sale-form">
+            <div class="dialog-heading">
+                <div><p class="eyebrow">TRANSACTION</p><h2>Record a sale</h2></div>
+                <button type="button" class="close-button" data-close="sale-dialog">×</button>
+            </div>
+
+            <label for="sale-product">Product</label>
+            <select id="sale-product" required></select>
+
+            <label for="sale-quantity">Quantity</label>
+            <input id="sale-quantity" type="number" min="1" step="1" value="1" required>
+
+            <label for="sale-price">Unit price (UGX)</label>
+            <input id="sale-price" type="number" min="1" step="1" required>
+
+            <label for="sale-payment">Payment method</label>
+            <select id="sale-payment" required>
+                <option value="Cash">Cash</option>
+                <option value="MTN Mobile Money">MTN Mobile Money</option>
+                <option value="Airtel Money">Airtel Money</option>
+            </select>
+
+            <label for="sale-reference">Payment reference (optional)</label>
+            <input id="sale-reference" type="text" placeholder="Transaction ID">
+
+            <div class="form-total">
+                <span>Total</span>
+                <strong id="sale-total">UGX 500</strong>
+            </div>
+
+            <button type="submit" class="primary-button full-button">Save sale</button>
+            <p class="form-message" id="sale-message"></p>
+        </form>
+    </dialog>
+
+    <!-- Expense dialog -->
+    <dialog id="expense-dialog" class="app-dialog">
+        <form id="expense-form">
+            <div class="dialog-heading">
+                <div><p class="eyebrow">CASHBOOK</p><h2>Add expense</h2></div>
+                <button type="button" class="close-button" data-close="expense-dialog">×</button>
+            </div>
+
+            <label for="expense-description">Expense description</label>
+            <input id="expense-description" type="text" placeholder="e.g. Transport, rent" required>
+
+            <label for="expense-amount">Amount (UGX)</label>
+            <input id="expense-amount" type="number" min="1" step="1" required>
+
+            <label for="expense-payment">Payment method</label>
+            <select id="expense-payment">
+                <option>Cash</option>
+                <option>MTN Mobile Money</option>
+                <option>Airtel Money</option>
+            </select>
+
+            <button type="submit" class="primary-button full-button">Save expense</button>
+            <p class="form-message" id="expense-message"></p>
+        </form>
+    </dialog>
+
+    <!-- Stock dialog -->
+    <dialog id="stock-dialog" class="app-dialog">
+        <form id="stock-form">
+            <div class="dialog-heading">
+                <div><p class="eyebrow">INVENTORY</p><h2>Add finished stock</h2></div>
+                <button type="button" class="close-button" data-close="stock-dialog">×</button>
+            </div>
+
+            <label for="stock-product">Product</label>
+            <select id="stock-product" required></select>
+
+            <label for="stock-quantity">Quantity to add</label>
+            <input id="stock-quantity" type="number" min="1" step="1" required>
+
+            <button type="submit" class="primary-button full-button">Update stock</button>
+            <p class="form-message" id="stock-message"></p>
+        </form>
+    </dialog>
+
+    <script src="js/app.js"></script>
+    <script src="js/security.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>

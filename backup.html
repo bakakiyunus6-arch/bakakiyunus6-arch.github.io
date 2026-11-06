@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#002060">
+  <title>Backup & Restore | BAK SNACKS CENTER</title>
+  <link rel="stylesheet" href="css/backup.css">
+  <script src="js/backup.js" defer></script>
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" href="index.html">← Dashboard</a>
+    <div>
+      <h1>BAK SNACKS CENTER</h1>
+      <p>Business Backup & Restore</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <span class="eyebrow">DATA PROTECTION</span>
+      <h2>Protect your business records</h2>
+      <p>Save a backup file somewhere safe. You can use it to restore your business records if you change phones or lose browser data.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-icon">⬇️</div>
+      <h2>Create a backup</h2>
+      <p>Download a single JSON file containing your products, sales, raw materials, production batches, suppliers, purchases, supplier payments and cashbook entries.</p>
+      <button id="export-button" class="primary-button" disabled>Download Business Backup</button>
+      <div id="backup-info" class="info-text">Connecting to your business database…</div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-icon">⬆️</div>
+      <h2>Restore a backup</h2>
+      <p>Select a backup file previously exported from BAK SNACKS CENTER.</p>
+      <label class="file-label" for="backup-file">Choose backup file</label>
+      <input id="backup-file" type="file" accept=".json,application/json">
+      <div id="file-info" class="info-text">No backup file selected.</div>
+      <button id="restore-button" class="danger-button" disabled>Restore Business Records</button>
+      <p class="warning">
+        Warning: restoring replaces the records currently in this browser with the records in the selected backup. Download a fresh backup first if you need to preserve the current records.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Backup guidance</h2>
+      <ul>
+        <li>Download a backup regularly, especially after recording important transactions.</li>
+        <li>Keep a copy outside this phone, such as on a computer or a secure cloud drive.</li>
+        <li>Do not edit the JSON backup file manually.</li>
+        <li>A backup contains business information. Keep it private.</li>
+      </ul>
+    </section>
+
+    <div id="status" class="status" role="status" aria-live="polite">Preparing backup tools…</div>
+  </main>
+    <script src="js/security.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>

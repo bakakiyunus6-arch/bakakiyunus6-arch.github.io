@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10233f">
+    <title>Production | BAK SNACKS CENTER</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/production.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <a class="back-link" href="index.html" aria-label="Back to dashboard">←</a>
+            <div>
+                <h1>BAK SNACKS CENTER</h1>
+                <p>Production Management</p>
+            </div>
+        </div>
+        <div class="status"><span class="status-dot"></span> Local storage</div>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">BUSINESS OPERATIONS</p>
+                <h2>Production</h2>
+                <p class="muted">Convert raw materials into finished products.</p>
+            </div>
+            <button class="primary-button" id="new-batch-button">+ New batch</button>
+        </section>
+
+        <section class="stats-grid production-stats">
+            <article class="stat-card">
+                <span class="stat-label">Production batches</span>
+                <strong id="batch-count">0</strong>
+                <span class="stat-note">Recorded batches</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Units produced</span>
+                <strong id="units-produced">0</strong>
+                <span class="stat-note">Total finished units</span>
+            </article>
+            <article class="stat-card highlight-card">
+                <span class="stat-label">Today's production</span>
+                <strong id="today-produced">0</strong>
+                <span class="stat-note">Finished units today</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Recorded material cost</span>
+                <strong id="material-cost">UGX 0</strong>
+                <span class="stat-note">Cost of materials consumed</span>
+            </article>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <h3>Production history</h3>
+                    <p>Review completed production batches</p>
+                </div>
+                <button class="text-button" id="refresh-button">Refresh</button>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Batch</th>
+                            <th>Date</th>
+                            <th>Finished product</th>
+                            <th>Quantity produced</th>
+                            <th>Material cost</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="production-table">
+                        <tr><td colspan="6">Loading production records...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <h3>Production guide</h3>
+                    <p>How the production workflow affects inventory</p>
+                </div>
+            </div>
+            <div class="production-flow">
+                <div class="flow-step">
+                    <span>1</span>
+                    <strong>Raw materials</strong>
+                    <small>Ingredients and packaging</small>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <span>2</span>
+                    <strong>Production</strong>
+                    <small>Record actual consumption</small>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <span>3</span>
+                    <strong>Finished stock</strong>
+                    <small>Products ready for sale</small>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>BAK SNACKS CENTER &copy; <span id="year"></span></p>
+            <p>Production records</p>
+        </footer>
+    </main>
+
+    <dialog id="production-dialog" class="app-dialog production-dialog">
+        <form id="production-form">
+            <div class="dialog-heading">
+                <div>
+                    <p class="eyebrow">NEW PRODUCTION RECORD</p>
+                    <h2>Record production</h2>
+                </div>
+                <button type="button" class="close-button" data-close="production-dialog">×</button>
+            </div>
+
+            <label for="production-product">Finished product</label>
+            <select id="production-product" required></select>
+
+            <label for="production-quantity">Quantity produced</label>
+            <input id="production-quantity" type="number" min="1" step="1" required>
+
+            <div class="materials-title">
+                <div>
+                    <h3>Materials consumed</h3>
+                    <p>Enter the actual quantity used in this batch.</p>
+                </div>
+                <button type="button" class="text-button" id="add-consumption-row">+ Add material</button>
+            </div>
+
+            <div id="consumption-rows"></div>
+
+            <label for="production-notes">Production notes (optional)</label>
+            <textarea id="production-notes" rows="2" maxlength="300"
+                placeholder="e.g. Batch observations"></textarea>
+
+            <div class="production-summary">
+                <div><span>Material cost</span><strong id="batch-cost">UGX 0</strong></div>
+                <div><span>Production date</span><strong id="batch-date"></strong></div>
+            </div>
+
+            <button type="submit" class="primary-button full-button">Complete production batch</button>
+            <p class="form-message" id="production-message"></p>
+        </form>
+    </dialog>
+
+    <dialog id="batch-details-dialog" class="app-dialog">
+        <div class="dialog-heading">
+            <div><p class="eyebrow">PRODUCTION HISTORY</p><h2>Batch details</h2></div>
+            <button type="button" class="close-button" data-close="batch-details-dialog">×</button>
+        </div>
+        <div id="batch-details-content"></div>
+    </dialog>
+
+    <script src="js/production.js"></script>
+    <script src="js/security.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>

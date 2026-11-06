@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#002060">
+  <title>Purchases & Suppliers | BAK SNACKS CENTER</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/purchases.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <main class="purchases-page">
+    <header class="purchase-header">
+      <div>
+        <p class="eyebrow">BAK SNACKS CENTER</p>
+        <h1>Purchases & Suppliers</h1>
+        <p>Manage material purchases and supplier payments.</p>
+      </div>
+      <a class="back-link" href="index.html">← Dashboard</a>
+    </header>
+
+    <section class="purchase-stats">
+      <article class="purchase-stat">
+        <span>Total purchases</span>
+        <strong id="totalPurchases">UGX 0</strong>
+      </article>
+      <article class="purchase-stat">
+        <span>Amount paid</span>
+        <strong id="totalPaid">UGX 0</strong>
+      </article>
+      <article class="purchase-stat">
+        <span>Supplier balances</span>
+        <strong id="totalOutstanding">UGX 0</strong>
+      </article>
+      <article class="purchase-stat">
+        <span>Registered suppliers</span>
+        <strong id="supplierCount">0</strong>
+      </article>
+    </section>
+
+    <section class="purchase-panel">
+      <h2>Register supplier</h2>
+      <form id="supplierForm" class="supplier-form">
+        <label>
+          Supplier name
+          <input id="supplierName" required maxlength="80" placeholder="e.g. Kampala Wholesale">
+        </label>
+        <label>
+          Phone number
+          <input id="supplierPhone" maxlength="25" placeholder="e.g. 07XXXXXXXX">
+        </label>
+        <label>
+          Notes
+          <input id="supplierNotes" maxlength="200" placeholder="Optional information">
+        </label>
+        <button type="submit">Save supplier</button>
+      </form>
+      <div id="supplierMessage" class="message" aria-live="polite"></div>
+      <div id="supplierList" class="supplier-list"></div>
+    </section>
+
+    <section class="purchase-panel">
+      <h2>Record a purchase</h2>
+      <form id="purchaseForm">
+        <div class="form-grid">
+          <label>
+            Supplier
+            <select id="purchaseSupplier">
+              <option value="">No supplier selected</option>
+            </select>
+          </label>
+          <label>
+            Purchase date
+            <input type="date" id="purchaseDate" required>
+          </label>
+        </div>
+
+        <div class="section-subheading">
+          <h3>Materials purchased</h3>
+          <button type="button" class="secondary-button" id="addItemButton">+ Add material</button>
+        </div>
+
+        <div id="purchaseItems"></div>
+
+        <div class="purchase-total">
+          <span>Purchase total</span>
+          <strong id="purchaseTotal">UGX 0</strong>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            Amount paid now (UGX)
+            <input type="number" id="purchasePaid" min="0" step="1" value="0" required>
+          </label>
+          <label>
+            Payment method
+            <select id="purchaseMethod">
+              <option value="">Select payment method</option>
+              <option value="Cash">Cash</option>
+              <option value="MTN Mobile Money">MTN Mobile Money</option>
+              <option value="Airtel Money">Airtel Money</option>
+            </select>
+          </label>
+          <label>
+            Payment reference
+            <input id="purchaseReference" maxlength="80" placeholder="Optional transaction reference">
+          </label>
+          <label>
+            Notes
+            <input id="purchaseNotes" maxlength="200" placeholder="Optional purchase notes">
+          </label>
+        </div>
+
+        <p class="help-text">
+          The unpaid amount becomes a supplier balance. Material stock and average unit costs
+          update when you save the purchase.
+        </p>
+        <button type="submit" class="primary-button">Save purchase and update stock</button>
+        <div id="purchaseMessage" class="message" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="purchase-panel">
+      <h2>Record supplier payment</h2>
+      <form id="paymentForm" class="payment-form">
+        <label>
+          Outstanding purchase
+          <select id="paymentPurchase" required>
+            <option value="">Select an unpaid purchase</option>
+          </select>
+        </label>
+        <label>
+          Payment amount (UGX)
+          <input type="number" id="paymentAmount" min="1" step="1" required>
+        </label>
+        <label>
+          Payment method
+          <select id="paymentMethod" required>
+            <option value="">Select method</option>
+            <option value="Cash">Cash</option>
+            <option value="MTN Mobile Money">MTN Mobile Money</option>
+            <option value="Airtel Money">Airtel Money</option>
+          </select>
+        </label>
+        <label>
+          Reference
+          <input id="paymentReference" maxlength="80" placeholder="Optional">
+        </label>
+        <button type="submit">Record payment</button>
+      </form>
+      <div id="paymentMessage" class="message" aria-live="polite"></div>
+    </section>
+
+    <section class="purchase-panel">
+      <h2>Purchase history</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Purchase</th>
+              <th>Date</th>
+              <th>Supplier</th>
+              <th>Total</th>
+              <th>Paid</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody id="purchaseHistory">
+            <tr><td colspan="6">Loading purchases...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/purchases.js"></script>
+    <script src="js/security.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>
