@@ -5,9 +5,9 @@
     ],
     "target": {
       "namespace": "android_app",
-      "package_name": "app.netlify.endearing_sable_66a1ff.twa",
+      "package_name": "io.github.bakakiyunus6_arch.twa",
       "sha256_cert_fingerprints": [
-        "B8:5D:CD:D4:20:97:1F:99:D9:76:EE:85:5D:CD:BE:E8:3E:67:8F:2D:D5:92:CA:AD:E2:ED:30:35:A0:75:43:D0"
+        "72:66:2B:83:32:F7:0D:33:0D:6C:2E:64:F8:B0:B2:2A:27:87:C7:55:7D:21:3C:CE:C6:FD:AB:93:80:21:C3:F0"
       ]
     }
   }
